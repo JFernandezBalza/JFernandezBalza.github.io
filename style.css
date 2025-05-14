@@ -1,77 +1,92 @@
-/* Estilos para el body (fondo y color de texto) */
-body {
-    font-family: sans-serif; /* Cambia la fuente */
-    background-color: #f4f4f4; /* Color de fondo gris claro */
-    color: #333; /* Color de texto gris oscuro */
-    margin: 0; /* Elimina el margen predeterminado del body */
-    padding: 20px; /* Añade un poco de espacio alrededor del contenido */
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Estilos personalizados (opcional) */
+        body {
+            font-family: sans-serif; /* Puedes cambiar la fuente aquí */
+        }
 
-/* Estilos para el encabezado */
-header {
-    background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    padding: 20px;
-    text-align: center; /* Centra el texto */
-}
+        .link-primary {
+            color: #007bff !important; /* Manteniendo tu color primario */
+            text-decoration: none;
+        }
 
-/* Estilos para el título principal */
-header h1 {
-    margin-bottom: 10px; /* Espacio debajo del título */
-}
+        .link-primary:hover {
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white py-4 text-center">
+        <h1>JFernandezBalza</h1>
+        <p class="lead">Desarrollador Full Stack con enfoque en Back-End</p>
+    </header>
 
-/* Estilos para la sección de proyectos */
-#proyectos {
-    margin-top: 30px; /* Espacio sobre la sección */
-}
+    <section id="proyectos" class="container mt-5">
+        <h2>Proyectos Destacados</h2>
 
-#proyectos h2 {
-    color: #007bff; /* Color azul para el título de la sección */
-    border-bottom: 2px solid #007bff; /* Línea debajo del título */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">ExtremeGym - Plataforma Integral de Fitness</h3>
+                        <p class="card-text">Plataforma Full Stack robusta y escalable para la gestión de gimnasios y la interacción de usuarios, ofreciendo funcionalidades desde administración hasta comunidad y reservas.</p>
+                        <h4 class="card-subtitle mb-2 text-muted">Mi Rol y Contribuciones (Back-End):</h4>
+                        <ul class="list-unstyled">
+                            <li>Diseño e implementación de la arquitectura Back-End con NestJS.</li>
+                            <li>Desarrollo de un Panel de Administración Inteligente.</li>
+                            <li>Creación de un Sistema Integral de Gestión de Eventos.</li>
+                            <li>Implementación de un Sistema de Reservas Optimizado.</li>
+                            <li>Desarrollo de un Módulo de Comunidad Dinámica.</li>
+                            <li>Implementación de una Gestión Segura y Eficiente de Carga de Imágenes (FileUpload).</li>
+                            <li>Integración de Funcionalidades de Geolocalización Inteligente.</li>
+                        </ul>
+                        <h4 class="card-subtitle mb-2 text-muted">Tecnologías Utilizadas:</h4>
+                        <p class="card-text">NestJS (Back-End), [Añade aquí las tecnologías de Front-End y base de datos], [Otras tecnologías].</p>
+                        <h4 class="card-subtitle mb-2 text-muted">Enlaces:</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://pf-extreme-gym.vercel.app/" target="_blank" rel="noopener noreferrer" class="link-primary">Front-End</a></li>
+                            <li><a href="https://pf-extreme-gym.onrender.com/api" target="_blank" rel="noopener noreferrer" class="link-primary">Back-End (API)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-/* Estilos para cada proyecto */
-.proyecto {
-    background-color: #fff; /* Fondo blanco para cada proyecto */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">E-commerce Potente y Atractivo</h3>
+                        <p class="card-text">Lideré el desarrollo del backend de un e-commerce, construyendo una arquitectura robusta y escalable con NestJS.</p>
+                        <h4 class="card-subtitle mb-2 text-muted">Tecnologías Clave (Back-End):</h4>
+                        <p class="card-text">NestJS (TypeScript), PostgreSQL, TypeORM, JWT, Swagger, Render, Helmet/CORS.</p>
+                        <h4 class="card-subtitle mb-2 text-muted">Lo clave del proyecto:</h4>
+                        <ul class="list-unstyled">
+                            <li>Arquitectura Robusta: API REST completa y modular, siguiendo principios SOLID/Clean Code.</li>
+                            <li>Seguridad Fuerte: Autenticación JWT y protección con Helmet/CORS.</li>
+                            <li>Buena Documentación: API clara con Swagger.</li>
+                            <li>Funcionalidades E-commerce: Gestión de productos/categorías, órdenes/carrito, carga de imágenes, paginación/filtros avanzados y usuarios/roles.</li>
+                        </ul>
+                        <h4 class="card-subtitle mb-2 text-muted">Enlaces:</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://e-commerce-nemn.onrender.com/api" target="_blank" rel="noopener noreferrer" class="link-primary">API Documentation</a></li>
+                            <li><a href="https://github.com/JFernandezBalza/E-commerce" target="_blank" rel="noopener noreferrer" class="link-primary">GitHub Repository</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.proyecto h3 {
-    color: #333; /* Título del proyecto */
-    margin-top: 0;
-}
+    <footer class="bg-light py-3 text-center">
+        <p class="text-muted" 2025 JFernandezBalza</p>
+    </footer>
 
-.proyecto h4 {
-    color: #555; /* Subtítulos */
-    margin-top: 15px;
-}
-
-.proyecto ul {
-    list-style: none; /* Elimina los puntos de la lista */
-    padding-left: 0;
-}
-
-.proyecto li {
-    margin-bottom: 5px;
-}
-
-.proyecto a {
-    color: #007bff; /* Color azul para los enlaces */
-    text-decoration: none; /* Elimina el subrayado predeterminado */
-}
-
-.proyecto a:hover {
-    text-decoration: underline; /* Subraya al pasar el ratón */
-}
-
-/* Estilos para el pie de página */
-footer {
-    text-align: center; /* Centra el texto del pie de página */
-    padding-top: 20px;
-    color: #777;
-}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
