@@ -3,12 +3,17 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+// Importa los iconos de Heroicons para el menú móvil
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'; // <-- ¡Importa estos iconos!
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isNavHiddenByClick, setIsNavHiddenByClick] = useState(false);
   // Estado para el tema actual de la Navbar: 'dark' (para fondo claro) o 'light' (para fondo oscuro)
   const [navbarTheme, setNavbarTheme] = useState<'dark' | 'light'>('light'); // Por defecto: Navbar es CLARA (el body es oscuro)
+
+  // NUEVO ESTADO: Para controlar la visibilidad del menú móvil
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // <-- NUEVO
 
   // Ref para el IntersectionObserver
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -20,6 +25,11 @@ const Navbar = () => {
       setScrolled(currentScrollPos > 20);
       if (isNavHiddenByClick && currentScrollPos > 0) {
         setIsNavHiddenByClick(false);
+      }
+      // Asegúrate de cerrar el menú móvil al hacer scroll
+      if (isMobileMenuOpen && currentScrollPos > 0) {
+        // <-- NUEVO
+        setIsMobileMenuOpen(false); // <-- NUEVO
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -82,11 +92,18 @@ const Navbar = () => {
         observerRef.current.disconnect(); // Desconecta el observador para evitar fugas de memoria
       }
     };
-  }, [isNavHiddenByClick]); // isNavHiddenByClick como dependencia para que el efecto de scroll se actualice
+  }, [isNavHiddenByClick, isMobileMenuOpen]); // isMobileMenuOpen como dependencia para que el efecto de scroll se actualice
 
-  // Función para ocultar la Navbar por clic
+  // NUEVA FUNCIÓN: Para alternar el estado del menú móvil
+  const toggleMobileMenu = () => {
+    // <-- NUEVO
+    setIsMobileMenuOpen(!isMobileMenuOpen); // <-- NUEVO
+  }; // <-- NUEVO
+
+  // Modifica handleNavLinkClick para cerrar también el menú móvil
   const handleNavLinkClick = () => {
     setIsNavHiddenByClick(true);
+    setIsMobileMenuOpen(false); // <-- Añade esto para cerrar el menú al hacer clic en un enlace
   };
 
   // --- Definiciones de Clases para los Temas de Navbar ---
@@ -157,8 +174,25 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Enlaces de Navegación - ahora con clases de tema dinámicas */}
-        <ul className='flex space-x-2 sm:space-x-4 md:space-x-6 text-sm md:text-base'>
+        {/* Botón de Hamburguesa (visible solo en pantallas pequeñas) */}
+        {/* Usamos md:hidden para ocultarlo en pantallas medianas y grandes */}
+        <div className='md:hidden'>
+          <button
+            onClick={toggleMobileMenu}
+            className={`p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 ${activeTheme.textLink}`}
+            aria-label='Toggle navigation'
+          >
+            {isMobileMenuOpen ? (
+              <XMarkIcon className='h-7 w-7' /> // Icono de cerrar si el menú está abierto
+            ) : (
+              <Bars3Icon className='h-7 w-7' /> // Icono de hamburguesa si el menú está cerrado
+            )}
+          </button>
+        </div>
+
+        {/* Enlaces de Navegación (visible en pantallas medianas y grandes) */}
+        {/* Usamos hidden md:flex para ocultarlo en pantallas pequeñas y mostrarlo en md+ */}
+        <ul className='hidden md:flex space-x-2 sm:space-x-4 md:space-x-6 text-sm md:text-base'>
           <li>
             <Link
               href='#sobre-mi'
@@ -191,6 +225,62 @@ const Navbar = () => {
               href='#contacto'
               onClick={handleNavLinkClick}
               className={`${activeTheme.textLink} ${activeTheme.hoverTextLink} px-3 py-1.5 rounded-md transition-all duration-300 ${activeTheme.hoverBgLink} font-semibold whitespace-nowrap`}
+            >
+              Contacto
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* Menú móvil desplegable (visible solo cuando isMobileMenuOpen es true) */}
+      {/* También usamos md:hidden para que solo aparezca en pantallas pequeñas */}
+      <div
+        className={`
+          md:hidden transition-all duration-300 ease-in-out origin-top
+          ${
+            isMobileMenuOpen
+              ? 'max-h-96 opacity-100 py-4'
+              : 'max-h-0 opacity-0 overflow-hidden'
+          }
+          ${activeTheme.bg}
+          ${scrolled ? shadowClasses : ''}
+          ${scrolled ? blurClasses : ''}
+          w-full
+        `}
+      >
+        <ul className='flex flex-col items-center space-y-4 px-4'>
+          <li>
+            <Link
+              href='#sobre-mi'
+              onClick={handleNavLinkClick}
+              className={`${activeTheme.textLink} ${activeTheme.hoverTextLink} px-3 py-1.5 rounded-md transition-all duration-300 ${activeTheme.hoverBgLink} font-semibold text-lg`}
+            >
+              Sobre mí
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='#habilidades'
+              onClick={handleNavLinkClick}
+              className={`${activeTheme.textLink} ${activeTheme.hoverTextLink} px-3 py-1.5 rounded-md transition-all duration-300 ${activeTheme.hoverBgLink} font-semibold text-lg`}
+            >
+              Habilidades
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='#proyectos'
+              onClick={handleNavLinkClick}
+              className={`${activeTheme.textLink} ${activeTheme.hoverTextLink} px-3 py-1.5 rounded-md transition-all duration-300 ${activeTheme.hoverBgLink} font-semibold text-lg`}
+            >
+              Proyectos
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='#contacto'
+              onClick={handleNavLinkClick}
+              className={`${activeTheme.textLink} ${activeTheme.hoverTextLink} px-3 py-1.5 rounded-md transition-all duration-300 ${activeTheme.hoverBgLink} font-semibold text-lg`}
             >
               Contacto
             </Link>
