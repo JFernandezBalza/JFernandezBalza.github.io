@@ -1,0 +1,12 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Opcional: Define la fuente principal para font-sans de Tailwind */
+@layer base {
+  html {
+    font-family: var(--font-inter); /* Usa la variable de Inter como fuente base */
+  }
+}
+
