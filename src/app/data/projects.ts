@@ -43,7 +43,7 @@ export const projectsData: Project[] = [
   {
     title: 'Restaurante App - Plataforma Full Stack de Reservas',
     description:
-      'Diseñé y desarrollé una **aplicación Full Stack integral** para la gestión de un restaurante, que abarca desde la administración de usuarios hasta un robusto sistema de reservas. Mi enfoque se centró en construir una solución escalable y fácil de usar. Las funcionalidades clave incluyen la **creación segura de usuarios y autenticación**, un completo **sistema de reservas** con validaciones y gestión de disponibilidad, y el **registro persistente de todos los datos en una base de datos**. El proyecto garantiza una interacción fluida y una experiencia de usuario óptima, desde la creación de una cuenta hasta la confirmación de una reserva.',
+      'Diseñé y desarrollé una aplicación Full Stack integral para la gestión de un restaurante, que abarca desde la administración de usuarios hasta un robusto sistema de reservas. Mi enfoque se centró en construir una solución escalable y fácil de usar. Las funcionalidades clave incluyen la creación segura de usuarios y autenticación, un completo sistema de reservas con validaciones y gestión de disponibilidad, y el registro persistente de todos los datos en una base de datos. El proyecto garantiza una interacción fluida y una experiencia de usuario óptima, desde la creación de una cuenta hasta la confirmación de una reserva.',
     image: '/restaurant.png',
     alt: 'Imagen de la aplicación de reservas del restaurante',
     technologies: [
