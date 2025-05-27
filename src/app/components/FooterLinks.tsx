@@ -34,10 +34,10 @@ const FooterLinks = () => {
       <div
         className='
           w-full flex flex-col sm:flex-row items-center justify-center {/* Ocupa todo el ancho y centra el contenido */}
-          px-10 pb-5 {/* Padding superior de 5, lateral de 10, e inferior de 5 */}
+          pt-5 px-10 pb-5 {/* Padding superior de 5, lateral de 10, e inferior de 5 */}
           bg-gray-900 text-gray-300 {/* Fondo muy oscuro y texto claro para el footer */}
           border-t border-gray-600 {/* Borde superior sutil */}
-          gap-2 sm:gap-4 {/* Espacio entre los enlaces */}
+          gap-4 sm:gap-6 {/* Espacio entre los enlaces */}
         '
       >
         <a

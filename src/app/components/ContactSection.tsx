@@ -11,6 +11,7 @@ const ContactSection = () => {
         min-h-screen flex items-center justify-center
         bg-gray-900 text-gray-100
         w-full
+        pb-12
       '
     >
       <div
@@ -26,7 +27,6 @@ const ContactSection = () => {
 
         <div className='max-w-md mx-auto mt-8'>
           {' '}
-          {/* Añadimos margen superior para separar del título */}
           <p className='text-gray-300 text-lg mb-4'>
             Si estás interesado en mi trabajo o tienes alguna pregunta, no dudes
             en contactarme directamente:
@@ -41,11 +41,6 @@ const ContactSection = () => {
           >
             Gmail Joser Fernández
           </a>
-          {/* Puedes añadir más enlaces aquí si quieres, como tu LinkedIn o GitHub */}
-          {/* <div className='flex justify-center space-x-4 mt-8'>
-            <a href='https://github.com/JFernandezBalza' target='_blank' rel='noopener noreferrer' className='text-gray-400 hover:text-blue-400 text-sm'>GitHub</a>
-            <a href='https://www.linkedin.com/in/joser-a-fernandez-b-76182429b' target='_blank' rel='noopener noreferrer' className='text-gray-400 hover:text-blue-400 text-sm'>LinkedIn</a>
-          </div> */}
         </div>
       </div>
     </section>
