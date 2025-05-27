@@ -11,7 +11,7 @@ const ContactSection = () => {
         min-h-screen flex items-center justify-center
         bg-gray-900 text-gray-100
         w-full
-        pb-12
+        py-12
       '
     >
       <div
@@ -21,11 +21,11 @@ const ContactSection = () => {
         text-center
       '
       >
-        <h2 className='text-4xl md:text-5xl font-bold text-gray-300'>
+        <h2 className='text-4xl md:text-5xl font-bold text-gray-300 mb-8'>
           Ponte en Contacto
         </h2>
 
-        <div className='max-w-md mx-auto mt-8'>
+        <div className='max-w-md mx-auto mb-0'>
           {' '}
           <p className='text-gray-300 text-lg mb-4'>
             Si estás interesado en mi trabajo o tienes alguna pregunta, no dudes
