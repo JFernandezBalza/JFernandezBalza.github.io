@@ -39,7 +39,7 @@ const ContactSection = () => {
               text-xl md:text-2xl inline-block
             '
           >
-            joss.jota21@gmail.com
+            Gmail Joser Fernández
           </a>
           {/* Puedes añadir más enlaces aquí si quieres, como tu LinkedIn o GitHub */}
           {/* <div className='flex justify-center space-x-4 mt-8'>
