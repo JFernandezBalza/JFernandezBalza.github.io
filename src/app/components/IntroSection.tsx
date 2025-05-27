@@ -1,12 +1,11 @@
-// src/app/components/IntroSection.tsx
 import React from 'react';
-import Link from 'next/link'; // Importa Link para los botones
+import Link from 'next/link';
 
 const IntroSection = () => {
   return (
     <section
       id='inicio'
-      data-section-bg='dark' // Indica a la Navbar que esta sección tiene un fondo OSCURO
+      data-section-bg='dark' 
       className='
         flex items-center justify-start {/* Alinea el contenido al inicio verticalmente */}
         bg-gray-900 text-gray-900 {/* Fondo oscuro, texto general claro */}
@@ -22,9 +21,7 @@ const IntroSection = () => {
         text-left {/* Alinea todo el texto a la izquierda */}
       '
       >
-        {/* Contenedor para el nombre y la especialidad: flexbox para alinearlos */}
         <div className='flex flex-col md:flex-row md:items-baseline mb-4 md:mb-10'>
-          {/* Título " Joser Fernández" con gradiente en el nombre */}
           <h1
             className='
             text-6xl md:text-7xl lg:text-8xl xl:text-9xl {/* Tamaños de fuente grandes y responsivos */}
@@ -42,10 +39,8 @@ const IntroSection = () => {
             </span>
           </h1>
 
-          {/* Contenedor para las dos partes de la especialidad */}
           <div className='flex flex-col'>
             {' '}
-            {/* Nuevo div para contener las dos partes */}
             <p
               className='
               text-xl md:text-2xl lg:text-3xl {/* Tamaños de fuente reducidos en un 15% */}
@@ -57,7 +52,6 @@ const IntroSection = () => {
           </div>
         </div>
 
-        {/* Párrafo de descripción */}
         <p
           className='
           mt-6 md:mt-8 text-xl md:text-2xl lg:text-3xl {/* Tamaños de fuente aumentados */}
@@ -69,11 +63,10 @@ const IntroSection = () => {
           innovación y la excelencia en el desarrollo.
         </p>
 
-        {/* Contenedor para los botones (flexbox para que estén uno al lado del otro en pantallas grandes) */}
         <div className='flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8 md:mt-12'>
-          {/* Botón "Ver más" (ej. a "Sobre mí") */}
+
           <Link
-            href='#sobre-mi' // Enlaza a la sección "Sobre mí"
+            href='#sobre-mi' 
             className='
               px-6 py-3 border-2 rounded-lg {/* Borde, padding y esquinas redondeadas */}
               border-green-500 text-green-500 {/* Borde y texto verde */}
@@ -86,9 +79,8 @@ const IntroSection = () => {
             Ver más
           </Link>
 
-          {/* Botón "Proyectos" */}
           <Link
-            href='#proyectos' // Enlaza a la sección "Proyectos"
+            href='#proyectos' 
             className='
               px-6 py-3 border-2 rounded-lg
               border-purple-500 text-purple-500

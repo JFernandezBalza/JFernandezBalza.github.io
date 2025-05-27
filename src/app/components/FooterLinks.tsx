@@ -1,17 +1,14 @@
-// src/app/components/FooterLinks.tsx
-'use client'; // Necesario para usar useState y useEffect
+'use client'; 
 
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react'; // Importar useState y useEffect
-import { ArrowUpCircleIcon } from '@heroicons/react/24/solid'; // Importar el icono de flecha
+import React, { useState, useEffect } from 'react'; 
+import { ArrowUpCircleIcon } from '@heroicons/react/24/solid'; 
 
 const FooterLinks = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
-  // Efecto para controlar la visibilidad del botón de scroll
   useEffect(() => {
     const handleScroll = () => {
-      // Muestra el botón si el scroll vertical es mayor a 300px
       if (window.scrollY > 300) {
         setShowScrollButton(true);
       } else {
@@ -20,17 +17,15 @@ const FooterLinks = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Limpiar el event listener al desmontar el componente
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // El array vacío asegura que el efecto se ejecute solo una vez al montar
+  }, []);
 
-  // Función para hacer scroll al inicio de la página
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Desplazamiento suave
+      behavior: 'smooth',
     });
   };
 
@@ -45,7 +40,6 @@ const FooterLinks = () => {
           gap-4 sm:gap-6 {/* Espacio entre los enlaces */}
         '
       >
-        {/* Enlace a GitHub */}
         <a
           href='https://github.com/JFernandezBalza'
           target='_blank'
@@ -61,7 +55,6 @@ const FooterLinks = () => {
         >
           GitHub
         </a>
-        {/* Enlace a LinkedIn */}
         <a
           href='https://www.linkedin.com/in/joser-a-fernandez-b-76182429b/'
           target='_blank'
@@ -77,16 +70,12 @@ const FooterLinks = () => {
         >
           LinkedIn
         </a>
-        {/* Línea divisoria */}
         <div className='w-full h-px bg-gray-300 my-4 sm:my-0 sm:hidden'></div>{' '}
-        {/* Línea visible solo en móvil */}
-        {/* Aviso de Copyright */}
         <p className='text-sm text-gray-300 mt-4 sm:mt-0'>
           © 2025 - Developed by Joser Fernández
         </p>
       </div>
 
-      {/* Botón de "Scroll to Top" */}
       {showScrollButton && (
         <button
           onClick={scrollToTop}
@@ -99,7 +88,7 @@ const FooterLinks = () => {
           '
           aria-label='Scroll to top'
         >
-          <ArrowUpCircleIcon className='h-8 w-8' /> {/* Icono de flecha */}
+          <ArrowUpCircleIcon className='h-8 w-8' />
         </button>
       )}
     </>

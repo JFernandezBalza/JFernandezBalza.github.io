@@ -20,7 +20,6 @@ const AboutSection = () => {
         text-center {/* Alinea todo el texto al centro */}
       '
       >
-        {/* Título de la sección */}
         <h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-8 md:mb-12'>
           Acerca de mí
         </h2>
@@ -70,7 +69,6 @@ const AboutSection = () => {
                 Descargar CV
               </a>
 
-              {/* Botón "GitHub" */}
               <a
                 href='https://github.com/JFernandezBalza'
                 target='_blank'
@@ -87,7 +85,6 @@ const AboutSection = () => {
                 GitHub
               </a>
 
-              {/* Botón "LinkedIn" */}
               <a
                 href='https://www.linkedin.com/in/joser-a-fernandez-b-76182429b/'
                 target='_blank'

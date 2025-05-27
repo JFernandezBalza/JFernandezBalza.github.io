@@ -1,4 +1,4 @@
-"use client"; // Asegúrate de que esta línea esté al inicio si usas componentes interactivos aquí o en sus hijos
+"use client";
 
 import Navbar from '../app/components/NavBar'
 import IntroSection from './components/IntroSection';

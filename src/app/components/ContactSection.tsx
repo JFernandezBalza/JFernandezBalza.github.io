@@ -1,10 +1,8 @@
-// src/app/components/ContactSection.tsx
-'use client'; // Asegúrate de que esta línea esté al inicio si usas componentes interactivos aquí
+'use client';
 
-import React, { useState } from 'react'; // Importar React y useState para formularios interactivos
+import React, { useState } from 'react';
 
 const ContactSection = () => {
-  // Puedes añadir lógica de estado y envío de formulario aquí más adelante si lo necesitas
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -21,17 +19,15 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario (ej. a una API, email service)
     console.log('Formulario enviado:', formData);
-    // Puedes añadir una confirmación visual al usuario aquí
-    // alert('¡Mensaje enviado! Gracias por contactarme.'); // Usar una modal personalizada en un entorno real
-    setFormData({ nombre: '', email: '', mensaje: '' }); // Limpiar formulario
+
+    setFormData({ nombre: '', email: '', mensaje: '' });
   };
 
   return (
     <section
       id='contacto'
-      data-section-bg='dark' // CAMBIADO: Indica a la Navbar que esta sección tiene un fondo OSCURO
+      data-section-bg='dark'
       className='
         min-h-screen flex items-center justify-center {/* Ocupa al menos la altura de la pantalla y centra contenido */}
         bg-gray-900 text-gray-100 {/* CAMBIADO: Fondo oscuro, texto general claro */}
@@ -45,12 +41,11 @@ const ContactSection = () => {
         text-center {/* Alinea todo el texto al centro */}
       '
       >
-        {/* Título de la sección */}
-        <h2 className='text-4xl md:text-5xl font-bold text-gray-300'> {/* CAMBIADO: Color de título consistente con el tema oscuro */}
+        <h2 className='text-4xl md:text-5xl font-bold text-gray-300'> 
           Ponte en Contacto
         </h2>
 
-        <div className='max-w-md mx-auto'> {/* Contenedor para centrar el formulario */}
+        <div className='max-w-md mx-auto'> 
           <form onSubmit={handleSubmit} className='space-y-2'>
             <div>
               <label
@@ -108,7 +103,7 @@ const ContactSection = () => {
             </button>
           </form>
           <div className='mt-8'>
-            <p className='text-gray-300'> {/* CAMBIADO: Color de texto para fondo oscuro */}
+            <p className='text-gray-300'>
               O puedes contactarme directamente en:
             </p>
             <a
@@ -117,7 +112,6 @@ const ContactSection = () => {
             >
               joss.jota21@gmail.com
             </a>
-            {/* Puedes añadir enlaces a redes sociales aquí si lo deseas */}
             {/* <div className='flex justify-center space-x-4 mt-2'>
               <a href='#' className='text-gray-400 hover:text-blue-400'><GitHubIcon className='h-6 w-6' /></a>
               <a href='#' className='text-gray-400 hover:text-blue-400'><LinkedInIcon className='h-6 w-6' /></a>

@@ -1,22 +1,20 @@
-// src/app/data/skills.ts
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 import {
-  CodeBracketSquareIcon, // Para backend (NestJS, Node.js, Express.js)
-  CommandLineIcon, // Para frontend (HTML5, CSS3, JS, React, Next, jQuery, DOM)
-  BeakerIcon, // Para bases de datos (MongoDB, PostgreSQL, MySQL)
-  Cog6ToothIcon, // Para herramientas (Git, Docker, Postman, JSON)
-  UserGroupIcon, // Para habilidades blandas (Comunicación, Trabajo en Equipo, Proactividad, Resolución de Problemas)
-  GlobeAltIcon, // Para APIs (Consumo, Diseño RESTful)
-  AdjustmentsHorizontalIcon, // Para Adaptabilidad y Flexibilidad
-  ClockIcon, // Para Gestión del Tiempo y Priorización
-  CloudIcon, // Para Cloudinary, Vercel
-  LightBulbIcon, // Para Planificación y Desarrollo de Soluciones
-  CheckIcon, // Para Aseguramiento de la Calidad
-  FolderIcon, // Para Organización y Gestión de Información/Recursos
-  LockClosedIcon, // Para OAuth
+  CodeBracketSquareIcon, 
+  CommandLineIcon, 
+  BeakerIcon,
+  Cog6ToothIcon,
+  UserGroupIcon,
+  GlobeAltIcon, 
+  AdjustmentsHorizontalIcon,
+  ClockIcon,  
+  CloudIcon,  
+  LightBulbIcon,
+  CheckIcon, 
+  FolderIcon,
+  LockClosedIcon, 
 } from '@heroicons/react/24/solid';
 
-// Definición de tipo para una habilidad
 export type Skill = {
   name: string;
   category: 'backend' | 'frontend' | 'databases' | 'tools' | 'soft-skills';
@@ -26,12 +24,10 @@ export type Skill = {
       titleId?: string | undefined;
     } & RefAttributes<SVGSVGElement>
   >;
-  color?: string; // Clase de color de Tailwind para el icono (ej: 'text-blue-500')
+  color?: string; 
 };
 
-// Datos de todas tus habilidades
 export const allSkillsData: Skill[] = [
-  // Frontend
   {
     name: 'HTML5',
     category: 'frontend',
@@ -129,9 +125,8 @@ export const allSkillsData: Skill[] = [
     category: 'backend',
     icon: CloudIcon,
     color: 'text-blue-400',
-  }, // Usado para gestión de archivos/cloud en backend
+  },
 
-  // Bases de Datos
   {
     name: 'MongoDB',
     category: 'databases',
@@ -151,7 +146,6 @@ export const allSkillsData: Skill[] = [
     color: 'text-orange-600',
   },
 
-  // Herramientas
   {
     name: 'Git',
     category: 'tools',
@@ -183,7 +177,6 @@ export const allSkillsData: Skill[] = [
     color: 'text-gray-300',
   },
 
-  // Habilidades Blandas
   {
     name: 'Comunicación',
     category: 'soft-skills',

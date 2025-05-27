@@ -15,7 +15,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Joser Fernández | Desarrollador Full Stack', // ¡Personaliza esto!
+  title: 'Joser Fernández | Desarrollador Full Stack',
   description:
     'Portafolio profesional de Joser Fernández, desarrollador Full Stack especializado en aplicaciones robustas y escalables.', // ¡Personaliza esto!
 };
@@ -32,7 +32,6 @@ export default function RootLayout({
     >
       <body className='bg-gray-900 text-gray-100 antialiased font-sans'>
         {children}{' '}
-        {/* Aquí es donde Next.js inyectará el contenido de tu page.tsx */}
       </body>
     </html>
   );

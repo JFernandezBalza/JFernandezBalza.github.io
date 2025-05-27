@@ -1,15 +1,14 @@
-// src/app/components/ProjectsSection.tsx
-'use client'; // Asegúrate de que esta línea esté al inicio si usas componentes interactivos aquí
+'use client'; 
 
 import Image from 'next/image';
-import React from 'react'; // Importar React para JSX
-import { projectsData } from '../data/projects'; // Asegúrate de que la ruta de importación sea correcta
+import React from 'react';
+import { projectsData } from '../data/projects';
 
 const ProjectsSection = () => {
   return (
     <section
       id='proyectos'
-      data-section-bg='light' // Indica a la Navbar que esta sección tiene un fondo CLARO
+      data-section-bg='light' 
       className='
         min-h-screen flex items-center justify-center
         bg-white text-gray-900
@@ -23,7 +22,6 @@ const ProjectsSection = () => {
         text-left {/* Alinea todo el texto a la izquierda */}
       '
       >
-        {/* Título de la sección */}
         <h2 className='text-4xl md:text-5xl font-bold text-gray-900 mb-8 md:mb-12 text-center'>
           Explora mis Proyectos
         </h2>
@@ -38,18 +36,16 @@ const ProjectsSection = () => {
                 bg-gray-900 border border-gray-900
               `}
             >
-              {/* Contenedor de la imagen */}
               <div className='w-full md:w-1/2 flex justify-center'>
                 <Image
                   src={project.image}
-                  alt={project.alt} // Usando la propiedad 'alt' de tu Project
+                  alt={project.alt}
                   width={900}
                   height={600}
                   className='rounded-md object-cover shadow-md border border-white-900'
                 />
               </div>
 
-              {/* Contenedor de la información del proyecto */}
               <div className='w-full md:w-1/2 text-center md:text-left'>
                 <h3 className='text-3xl font-bold text-gray-300 mb-3'>
                   {project.title}

@@ -1,133 +1,115 @@
-// src/app/components/Navbar.tsx
 'use client';
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-// Importa los iconos de Heroicons para el menú móvil
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'; // <-- ¡Importa estos iconos!
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isNavHiddenByClick, setIsNavHiddenByClick] = useState(false);
-  // Estado para el tema actual de la Navbar: 'dark' (para fondo claro) o 'light' (para fondo oscuro)
-  const [navbarTheme, setNavbarTheme] = useState<'dark' | 'light'>('light'); // Por defecto: Navbar es CLARA (el body es oscuro)
+  
+  const [navbarTheme, setNavbarTheme] = useState<'dark' | 'light'>('light');
 
-  // NUEVO ESTADO: Para controlar la visibilidad del menú móvil
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // <-- NUEVO
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Ref para el IntersectionObserver
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    // ---- Lógica para el comportamiento al hacer scroll ----
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       setScrolled(currentScrollPos > 20);
       if (isNavHiddenByClick && currentScrollPos > 0) {
         setIsNavHiddenByClick(false);
       }
-      // Asegúrate de cerrar el menú móvil al hacer scroll
       if (isMobileMenuOpen && currentScrollPos > 0) {
-        // <-- NUEVO
-        setIsMobileMenuOpen(false); // <-- NUEVO
+       
+        setIsMobileMenuOpen(false); 
       }
     };
     window.addEventListener('scroll', handleScroll);
 
-    // ---- Lógica para la detección de la sección actual (cambio de tema de Navbar) ----
-    // Limpia cualquier observador existente antes de crear uno nuevo
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
 
-    // Selecciona todas las secciones que tienen el atributo data-section-bg
     const sections = document.querySelectorAll('section[data-section-bg]');
 
     const options = {
-      root: null, // Observa con respecto al viewport
-      rootMargin: '0px', // No hay margen extra en el root
-      threshold: 0.1, // El callback se ejecutará cuando al menos el 10% del elemento sea visible
+      root: null, 
+      rootMargin: '0px',
+      threshold: 0.1, 
     };
 
     const callback = (entries: IntersectionObserverEntry[]) => {
-      let currentActiveSectionTheme: 'dark' | 'light' = 'light'; // Por defecto: Navbar CLARA (para un fondo oscuro)
-      let highestTopIntersection = Infinity; // Para encontrar la sección cuyo top está más cerca del 0 del viewport
+      let currentActiveSectionTheme: 'dark' | 'light' = 'light';
+      let highestTopIntersection = Infinity; 
 
       entries.forEach((entry) => {
-        // Solo consideramos las secciones que están intersectando y cuyo top está en la parte superior del viewport
-        // (por ejemplo, dentro del 70% superior del viewport)
+  
         if (
           entry.isIntersecting &&
           entry.boundingClientRect.top < window.innerHeight * 0.7
         ) {
-          // Si esta sección está más cerca de la parte superior que la mejor encontrada hasta ahora
+          
           if (entry.boundingClientRect.top < highestTopIntersection) {
             highestTopIntersection = entry.boundingClientRect.top;
             const sectionBgType = entry.target.getAttribute('data-section-bg');
-            // Si la sección tiene fondo OSCURO, la Navbar debe ser CLARA
+          
             if (sectionBgType === 'dark') {
               currentActiveSectionTheme = 'light';
             }
-            // Si la sección tiene fondo CLARO, la Navbar debe ser OSCURA
+          
             else if (sectionBgType === 'light') {
               currentActiveSectionTheme = 'dark';
             }
           }
         }
       });
-      // Actualiza el tema de la Navbar
+     
       setNavbarTheme(currentActiveSectionTheme);
     };
 
-    // Crea y empieza a observar las secciones
     observerRef.current = new IntersectionObserver(callback, options);
     sections.forEach((section) => {
       observerRef.current?.observe(section);
     });
 
-    // ---- Función de limpieza para cuando el componente se desmonte ----
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (observerRef.current) {
-        observerRef.current.disconnect(); // Desconecta el observador para evitar fugas de memoria
+        observerRef.current.disconnect(); 
       }
     };
-  }, [isNavHiddenByClick, isMobileMenuOpen]); // isMobileMenuOpen como dependencia para que el efecto de scroll se actualice
+  }, [isNavHiddenByClick, isMobileMenuOpen]);
 
-  // NUEVA FUNCIÓN: Para alternar el estado del menú móvil
   const toggleMobileMenu = () => {
-    // <-- NUEVO
-    setIsMobileMenuOpen(!isMobileMenuOpen); // <-- NUEVO
-  }; // <-- NUEVO
 
-  // Modifica handleNavLinkClick para cerrar también el menú móvil
-  const handleNavLinkClick = () => {
-    setIsNavHiddenByClick(true);
-    setIsMobileMenuOpen(false); // <-- Añade esto para cerrar el menú al hacer clic en un enlace
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // --- Definiciones de Clases para los Temas de Navbar ---
-  // Tema OSCURO para la Navbar (cuando está sobre un fondo CLARO)
+  const handleNavLinkClick = () => {
+    setIsNavHiddenByClick(true);
+    setIsMobileMenuOpen(false);
+  };
+
   const DARK_NAV_CLASSES = {
     bg: 'bg-gray-950',
     bgScrolled: 'bg-gray-950/95',
-    textMain: 'text-blue-500', // Título principal
-    textLink: 'text-blue-300', // Texto de enlaces
+    textMain: 'text-blue-500',
+    textLink: 'text-blue-300',
     hoverTextLink: 'hover:text-blue-500',
     hoverBgLink: 'hover:bg-blue-700/20',
   };
 
-  // Tema CLARO para la Navbar (cuando está sobre un fondo OSCURO)
   const LIGHT_NAV_CLASSES = {
-    bg: 'bg-white', // Fondo blanco
-    bgScrolled: 'bg-white/95', // Fondo blanco semi-opaco al scroll
-    textMain: 'text-gray-900', // Título principal oscuro
-    textLink: 'text-gray-700', // Texto de enlaces oscuro
+    bg: 'bg-white', 
+    bgScrolled: 'bg-white/95',
+    textMain: 'text-gray-900',
+    textLink: 'text-gray-700',
     hoverTextLink: 'hover:text-gray-900',
-    hoverBgLink: 'hover:bg-gray-200', // Fondo de hover gris claro
+    hoverBgLink: 'hover:bg-gray-200',
   };
 
-  // Selecciona el conjunto de clases activo según el estado 'navbarTheme'
   const activeTheme =
     navbarTheme === 'dark' ? DARK_NAV_CLASSES : LIGHT_NAV_CLASSES;
 
@@ -135,14 +117,12 @@ const Navbar = () => {
   let shadowClasses = '';
   let blurClasses = '';
 
-  // Lógica de visibilidad por clic (superpone al tema normal)
   if (isNavHiddenByClick) {
-    // Si está oculta por clic, usa el color base del tema actual, pero muy transparente
     currentBgClass = `${activeTheme.bg.replace(/(\/\d{2,3})$/, '/20')}`;
     shadowClasses = '';
     blurClasses = '';
   } else {
-    // Lógica normal de scroll, aplica el tema activo
+    
     if (scrolled) {
       currentBgClass = activeTheme.bgScrolled;
       shadowClasses = 'shadow-lg';
@@ -163,7 +143,7 @@ const Navbar = () => {
       `}
     >
       <div className='container mx-auto flex justify-between items-center px-4'>
-        {/* Título "Desarrollador Full Stack" - ahora con clases de tema dinámicas */}
+        
         <div
           className={`font-bold tracking-tight text-lg md:text-xl ${activeTheme.textMain}`}
         >
@@ -174,8 +154,6 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Botón de Hamburguesa (visible solo en pantallas pequeñas) */}
-        {/* Usamos md:hidden para ocultarlo en pantallas medianas y grandes */}
         <div className='md:hidden'>
           <button
             onClick={toggleMobileMenu}
@@ -183,15 +161,13 @@ const Navbar = () => {
             aria-label='Toggle navigation'
           >
             {isMobileMenuOpen ? (
-              <XMarkIcon className='h-7 w-7' /> // Icono de cerrar si el menú está abierto
+              <XMarkIcon className='h-7 w-7' /> 
             ) : (
-              <Bars3Icon className='h-7 w-7' /> // Icono de hamburguesa si el menú está cerrado
+              <Bars3Icon className='h-7 w-7' /> 
             )}
           </button>
         </div>
 
-        {/* Enlaces de Navegación (visible en pantallas medianas y grandes) */}
-        {/* Usamos hidden md:flex para ocultarlo en pantallas pequeñas y mostrarlo en md+ */}
         <ul className='hidden md:flex space-x-2 sm:space-x-4 md:space-x-6 text-sm md:text-base'>
           <li>
             <Link
@@ -232,8 +208,6 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Menú móvil desplegable (visible solo cuando isMobileMenuOpen es true) */}
-      {/* También usamos md:hidden para que solo aparezca en pantallas pequeñas */}
       <div
         className={`
           md:hidden transition-all duration-300 ease-in-out origin-top
