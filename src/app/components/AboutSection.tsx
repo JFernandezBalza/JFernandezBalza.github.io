@@ -1,13 +1,12 @@
-// src/app/components/AboutSection.tsx
 import Image from 'next/image';
-import React from 'react'; // Importar React para JSX
-import Link from 'next/link'; // Importar Link para los nuevos botones
+import React from 'react';
+import Link from 'next/link'; 
 
 const AboutSection = () => {
   return (
     <section
       id='sobre-mi'
-      data-section-bg='light' // Indica a la Navbar que esta sección tiene un fondo CLARO
+      data-section-bg='light'
       className='
         py-16 md:py-24 lg:py-32 {/* Padding vertical estándar para secciones */}
         bg-white text-gray-900 {/* Fondo claro, texto general oscuro */}
@@ -28,9 +27,8 @@ const AboutSection = () => {
 
         <div className='flex flex-col md:flex-row items-center md:items-start justify-center'>
           {' '}
-          {/* Alinea a la izquierda */}
           <Image
-            src='/perfil.jpeg.jpeg' // Asegúrate de que esta imagen esté en tu carpeta `public/`
+            src='/perfil.jpeg.jpeg'
             alt='Mi foto personal'
             width={300}
             height={300}
@@ -43,7 +41,6 @@ const AboutSection = () => {
           <div>
             <p className='text-lg md:text-xl leading-relaxed text-gray-900 mb-6'>
               {' '}
-              {/* Tamaño de texto y color para contraste */}
               Como desarrollador de aplicaciones web, me especializo en la
               construcción de sistemas robustos y eficientes, con un enfoque
               particular en el lado del servidor utilizando Node.js y NestJS. Mi
@@ -57,12 +54,10 @@ const AboutSection = () => {
               que impulsen mi crecimiento y me permitan aplicar mi creatividad
               en el desarrollo de experiencias digitales innovadoras.
             </p>
-            {/* Contenedor para los botones (flexbox para que estén uno al lado del otro en pantallas grandes) */}
             <div className='flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8 md:mt-12 justify-center'>
-              {/* Botón "Descargar CV" */}
               <a
-                href='/CVJoserFernandez.pdf' // Asegúrate de que este PDF esté en tu carpeta `public/`
-                download='CVJoserFernandez.pdf' // Atributo 'download' para descargar
+                href='/CVJoserFernandez.pdf' 
+                download='CVJoserFernandez.pdf' 
                 className='
                   px-6 py-3 border-2 rounded-lg {/* Borde, padding y esquinas redondeadas */}
                   border-blue-900 text-blue-900 {/* Borde y texto azul */}
