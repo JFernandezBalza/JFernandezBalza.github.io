@@ -15,9 +15,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Tu Nombre | Desarrollador Full Stack', // ¡Personaliza esto!
+  title: 'Joser Fernández | Desarrollador Full Stack', // ¡Personaliza esto!
   description:
-    'Portafolio profesional de [Tu Nombre], desarrollador Full Stack especializado en [tus tecnologías clave].', // ¡Personaliza esto!
+    'Portafolio profesional de Joser Fernández, desarrollador Full Stack especializado en aplicaciones robustas y escalables.', // ¡Personaliza esto!
 };
 
 export default function RootLayout({
